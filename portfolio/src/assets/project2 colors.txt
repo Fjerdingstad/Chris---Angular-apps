@@ -1,0 +1,11 @@
+Light Mode: 
+	Primary Indigo: #1A237E
+	Accent Yellow: #FBC02D
+	Warn Red: #B71C1C
+	Background Whitish: #FAFAFA
+
+Dark Mode :
+	Primary Blue: #90CAF9
+	Accent Orange: #FFCC80
+	Warn Pink: #F48FB1
+	Background Dark Grey: #303030

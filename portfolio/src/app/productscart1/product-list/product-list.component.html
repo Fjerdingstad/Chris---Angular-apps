@@ -1,0 +1,13 @@
+<div class="content">
+  <h2 class="color-accent">{{title}}</h2>
+
+  <div class="faces-container">
+    <div class="faces-div" *ngFor="let faces of faces">
+      <div matRipple [routerLink]="['/product1', faces.shortname]">
+        <img [src]="faces.imageUrl">
+        <div class="faces-name mb-4"><a class="link-color-primary" [routerLink]="['/product1', faces.shortname]"><h3>{{faces.name}}</h3></a></div>
+      </div>
+    </div>
+  </div>
+
+</div>

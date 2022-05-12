@@ -1,0 +1,31 @@
+<mat-sidenav-container class="mat-app-background" [class.sidenav-container]="otherTheme">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['home']">Home page</a>
+      <a mat-list-item [routerLink]="['forms']">Forms</a>
+      <a mat-list-item [routerLink]="['product1']">Product Listing</a>
+    </mat-nav-list>
+    <div class="nav-lower-container">
+      <button (click)="changeTheme()" mat-mini-fab color="accent"><fa-icon [icon]="faPaintBrush"></fa-icon></button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Portfolio</span>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

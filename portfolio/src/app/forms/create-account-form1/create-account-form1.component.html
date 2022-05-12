@@ -1,0 +1,50 @@
+<div class="content ">
+
+  <div class="img-div">
+    <div class="img-form-container">
+      <div class="img-form-content mat-app-background">
+
+        <h1 class="mb-4">Create Account</h1>
+
+        <form #form="ngForm">
+          <section class="mb-4">
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label for="name" >Name</mat-label>
+              <input matInput  placeholder="Ex. Caleb" id="name" name="name" [(ngModel)]="accountCreationInputs.name" required #nameField="ngModel">
+              <mat-error *ngIf="name.invalid">{{nameErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="John@Doe.com" id="email" name="email" [(ngModel)]="accountCreationInputs.email" required >
+              <mat-error *ngIf="email.invalid">{{emailErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" id="password" name="password" [(ngModel)]="accountCreationInputs.password" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="password.invalid">{{passwordErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-checkbox id="termsconditions" name="termsconditions"
+            [(ngModel)]="accountCreationInputs.termsconditions" [(ngModel)]="cb_state">
+            I agree to the <a href="">Terms</a> and <a href="">Privacy Policy</a></mat-checkbox>
+          </section>
+
+          <section class="mb-4 btn-section">
+            <button mat-raised-button color="accent" (click)="onSubmit(form)" [disabled]="!cb_state">Sign up</button>
+            <button mat-stroked-button color="accent" (click)="onSubmit(form)" [disabled]="!cb_state">Sign in</button>
+          </section>
+      </form>
+
+      <section class="mt-2 mb-2 error-messages">
+        <div [hidden] = "!postError" class="alert alert-danger">{{ postErrorMessage }}</div>
+        <div [hidden] = "!postSuccess" class="alert alert-success">
+          {{ postSucessMessage }}
+        </div>
+      </section>
+
+      </div>
+    </div>
+  </div>
+</div>

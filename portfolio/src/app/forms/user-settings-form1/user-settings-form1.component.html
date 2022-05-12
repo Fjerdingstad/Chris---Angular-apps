@@ -1,0 +1,64 @@
+<div class="content">
+  <h1 class="mb-4">{{title}}</h1>
+
+  <form class="user-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+    <section>
+      <mat-form-field class="field-half-width" appearance="fill">
+        <mat-label for="name" >Name</mat-label>
+        <input matInput placeholder="Ex. Chris" id="name" name="name" [(ngModel)]="userSettings.name" required #nameField="ngModel">
+        <mat-error *ngIf="name.invalid">{{nameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <span class="space"></span>
+      <mat-form-field class="field-half-width" appearance="fill">
+        <mat-label for="name" >Last Name</mat-label>
+        <input matInput placeholder="Ex. Fjerd" id="lastName" name="lastName" [(ngModel)]="userSettings.lastName" required #nameField="ngModel">
+        <mat-error *ngIf="lastName.invalid">{{lastNameErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+    </section>
+
+    <section>
+      <mat-form-field class="user-form" appearance="fill">
+        <mat-label>Subscription Type</mat-label>
+        <mat-select id="subscriptionType" name="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
+          <mat-option [value]="type" *ngFor="let type of subscriptionTypes | async">{{ type }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+
+    <section class="mb-3">
+      <h4>User Interface</h4>
+      <mat-button-toggle-group aria-label="User Interface">
+        <mat-button-toggle [(ngModel)]="userSettings.interfaceStyle" value="light" name="interfaceStyle" btnRadio="light">Light</mat-button-toggle>
+        <mat-button-toggle [(ngModel)]="userSettings.interfaceStyle" value="medium" name="interfaceStyle" btnRadio="medium">Medium</mat-button-toggle>
+        <mat-button-toggle [(ngModel)]="userSettings.interfaceStyle" value="dark" name="interfaceStyle" btnRadio="dark">Dark</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+
+    <section>
+      <mat-form-field class="field-full-width" appearance="fill">
+        <mat-label>Notes</mat-label>
+        <textarea matInput id="notes" name="notes" [(ngModel)]="userSettings.notes" placeholder="Ex. My preferences are..."></textarea>
+      </mat-form-field>
+    </section>
+
+    <section class="mb-3">
+      <mat-checkbox id="emailOffers" name="emailOffers" [(ngModel)]="userSettings.emailOffers">Email Offers</mat-checkbox>
+    </section>
+
+    <button mat-raised-button color="accent">Save</button>
+
+  </form>
+
+  <section class="mt-5 mb-5">
+    <div [hidden] = "!postError" class="alert alert-danger">{{ postErrorMessage }}</div>
+    <div [hidden] = "!postSuccess" class="alert alert-success">
+      {{ postSucessMessage }}
+    </div>
+    <!-- {{ userSettings | json }} -->
+  </section>
+
+</div>
+
+

@@ -1,0 +1,43 @@
+<div class="content">
+  <h2 class="color-warn">{{title}}</h2>
+
+  <div class="empty-container" *ngIf="items.length === 0">
+    <h2>Your cart is empty</h2>
+    <div class="empty-cart-img mt-5"></div>
+  </div>
+
+  <div class="card-container" *ngIf="items.length > 0">
+
+    <mat-card class="order-card" >
+      <mat-card-header class="card-header" *ngFor="let items of items">
+        <div mat-card-avatar class="order-header-image"><img [src]="items.imageUrl"></div>
+        <mat-card-title>{{items.name}}</mat-card-title>
+        <mat-card-subtitle>{{items.shortname}}</mat-card-subtitle>
+        <p>{{items.price | currency:'EUR' : 'symbol' : '1.2-2' : 'fr' }}</p>
+        <button mat-icon-button (click)="removeItem(items)"><mat-icon>close</mat-icon></button>
+      </mat-card-header>
+
+      <mat-card-content class="mt-3">
+        <mat-divider inset></mat-divider>
+        <div class="order-subtotal-container mt-3 mb-1">
+          <p class="order-subtotal">Subtotal:</p>
+          <p class="order-subtotal-amount">{{subtotal | currency:'EUR' : 'symbol' : '1.2-2' : 'fr' }}</p>
+        </div>
+        <div class="order-subtotal-container mb-3 mt-1">
+          <p class="order-shipping">Shipping:</p>
+          <p class="order-shipping-amount">{{shipping | currency:'EUR' : 'symbol' : '1.2-2' : 'fr' }}</p>
+        </div>
+        <mat-divider inset></mat-divider>
+        <div class="order-total-container mt-3">
+          <p class="order-total">Total:</p>
+          <p class="order-total-amount">{{totalPrice | currency:'EUR' : 'symbol' : '1.2-2' : 'fr' }}</p>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="order-card-actions mt-3">
+        <button (click)="clearButton()" mat-stroked-button color="warn">Clear cart</button>
+        <button mat-raised-button color="warn">Place order</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+</div>

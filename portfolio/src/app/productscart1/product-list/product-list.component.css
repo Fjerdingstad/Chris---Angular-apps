@@ -1,0 +1,51 @@
+.content .faces-container{
+  width:100%;
+  /* display:inline-block; */
+}
+
+.content .faces-container img{
+  /* this is 904/4, to have 4 heads per row, 904 bc is width of parent div */
+  width:226px;
+  transition: 0.1s;
+  align-self: center;
+  margin: auto;
+}
+
+.content .faces-container img:hover{
+  transform:scale(1.1);
+}
+
+.faces-div{
+  width: 25%;
+  align-items:center;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  float:left;
+  transition-duration: 0.1s;
+}
+.faces-div:hover{
+  background-color:rgb(128, 128, 128, 0.1);
+}
+
+.faces-div .faces-name{
+  text-align: center;
+}
+
+@media screen and (max-width: 1025px) {
+  .faces-div{
+    width: 25%;
+  }
+  .content .faces-container img{
+    width:200px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .faces-div{
+    width: 33%;
+  }
+  .content .faces-container img{
+    width:125px;
+  }
+}

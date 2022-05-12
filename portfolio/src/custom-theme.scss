@@ -1,0 +1,177 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$project2-primary: mat.define-palette(mat.$indigo-palette, 900);
+$project2-accent: mat.define-palette(mat.$yellow-palette, 700);
+
+// The warn palette is optional (defaults to red).
+$project2-warn: mat.define-palette(mat.$red-palette, 900);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$project2-theme: mat.define-light-theme((
+  color: (
+    primary: $project2-primary,
+    accent: $project2-accent,
+    warn: $project2-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+@include mat.all-component-themes($project2-theme);
+
+// alt theme
+$alt-primary: mat.define-palette(mat.$blue-palette, 200);
+$alt-accent: mat.define-palette(mat.$orange-palette, 200);
+$alt-warn: mat.define-palette(mat.$pink-palette, 200);
+$alt-theme: mat.define-dark-theme((
+  color: (
+    primary: $alt-primary,
+    accent: $alt-accent,
+    warn: $alt-warn,
+  )
+));
+
+.sidenav-container{
+  @include mat.all-component-themes($alt-theme);
+}
+
+
+.img-div a {
+  color: mat.get-color-from-palette($project2-accent);
+  text-decoration: none;
+}
+
+.img-div a:hover {
+  color: mat.get-color-from-palette($project2-primary);
+}
+
+.img-div{
+  background-image: url("/assets/img/monkey-light.png");
+}
+
+.homepage-img-content{
+  background-image: url("/assets/img/variant2(light2).png");
+}
+
+a.link-color-accent{
+  color: mat.get-color-from-palette($project2-accent);
+  text-decoration: none;
+}
+a.link-color-accent:hover{
+  color: mat.get-color-from-palette($project2-primary);
+}
+a.link-color-primary{
+  color: mat.get-color-from-palette($project2-primary);
+  text-decoration: none;
+}
+a.link-color-primary:hover{
+  color: mat.get-color-from-palette($project2-accent);
+}
+
+.color-primary{
+  color: mat.get-color-from-palette($project2-primary);
+}
+.color-accent{
+  color: mat.get-color-from-palette($project2-accent);
+}
+.color-warn{
+  color: mat.get-color-from-palette($project2-warn);
+}
+
+.bg-circle{
+  background-color: mat.get-color-from-palette($project2-primary);
+  animation-name:background_color_change;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+.empty-container .empty-cart-img{
+  background-image: url('/assets/img/empty-modif-light.png');
+}
+
+.main-img-form-container{
+  background-image: url("/assets/img/forms-light.png");
+}
+
+@keyframes background_color_change{
+  0% {background: mat.get-color-from-palette($project2-accent);}
+  100% { background-color: mat.get-color-from-palette($project2-primary);}
+}
+
+//  if sidenav-container, then theme is dark
+ .sidenav-container .img-div a {
+  color: mat.get-color-from-palette($alt-accent);
+  text-decoration: none;
+ }
+
+ .sidenav-container .img-div a:hover {
+  color: mat.get-color-from-palette($alt-primary);
+ }
+
+.sidenav-container .img-div{
+  background-image: url("/assets/img/monkey-dark3.png");
+}
+
+.sidenav-container .homepage-img-content{
+  background-image: url("/assets/img/variant2(dark2).png");
+}
+
+.sidenav-container a.link-color-accent{
+  color: mat.get-color-from-palette($alt-accent);
+  text-decoration: none;
+}
+.sidenav-container a.link-color-accent:hover{
+  color: mat.get-color-from-palette($alt-primary);
+}
+.sidenav-container a.link-color-primary{
+  color: mat.get-color-from-palette($alt-primary);
+  text-decoration: none;
+}
+.sidenav-container a.link-color-primary:hover{
+  color: mat.get-color-from-palette($alt-accent);
+}
+.sidenav-container .color-primary{
+  color: mat.get-color-from-palette($alt-primary);
+}
+.sidenav-container .color-accent{
+  color: mat.get-color-from-palette($alt-accent);
+}
+.sidenav-container .color-warn{
+  color: mat.get-color-from-palette($alt-warn);
+}
+
+.sidenav-container .bg-circle{
+  background-color: mat.get-color-from-palette($alt-primary);
+  animation-name:background_color_change2;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+.sidenav-container .empty-container .empty-cart-img{
+  background-image: url('/assets/img/empty-modif-dark.png');
+}
+
+.sidenav-container .main-img-form-container{
+  background-image: url("/assets/img/forms-dark.png");
+}
+
+
+@keyframes background_color_change2{
+  0% {background: mat.get-color-from-palette($alt-accent);}
+  100% { background-color: mat.get-color-from-palette($alt-primary);}
+}

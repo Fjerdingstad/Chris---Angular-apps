@@ -1,0 +1,15 @@
+<div class="content" *ngIf="faces">
+  <h2>{{faces.name}}</h2>
+
+  <div class="faces-container">
+    <div class="bg-circle"><img [src] = 'faces.imageUrl'></div>
+    <p class="mt-5">{{faces.description}}</p>
+    <h3 class="mt-3">{{faces.price | currency:'EUR' : 'symbol' : '1.2-2': 'fr' }}</h3>
+  </div>
+
+  <div class="btn-container">
+  <button mat-stroked-button class="mt-5" color="accent" (click)="onBack()"><i class="fa fa-chevron-left"></i> Back</button>
+  <button mat-raised-button class="mt-5" color="accent" (click)="addToCart(faces)"><i class="fa fa-cart-plus"></i> Add to cart</button>
+  </div>
+
+</div>

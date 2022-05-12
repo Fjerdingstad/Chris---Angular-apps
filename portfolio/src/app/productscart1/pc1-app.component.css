@@ -1,0 +1,21 @@
+.main-section{
+  display: flex;
+  justify-content: center;
+}
+
+.main-section button{
+  padding:0 3em 0 3em;
+  margin:0 1em 0 1em;
+}
+
+@media screen and (max-width: 1025px){
+  .main-section button{
+    padding: 0 3em 0 3em;
+    margin:0 1em 0 1em;
+  }
+}
+@media screen and (max-width: 767px){
+  .main-section button{
+    padding: 0 1em 0 1em;
+  }
+}
